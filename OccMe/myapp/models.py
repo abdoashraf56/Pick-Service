@@ -16,3 +16,7 @@ class Canadian (models.Model):
     rate = models.IntegerField()
     latitude = models.DecimalField(max_digits=8, decimal_places=6 , null=True)
     longitude = models.DecimalField(max_digits=9, decimal_places= 6 , null=True)
+
+
+    def __str__(self) :
+        return f"{self.firstname} {self.lastname}"
