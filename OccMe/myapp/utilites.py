@@ -6,5 +6,5 @@ def validatePhone(phone : str) -> str :
         if phone[:2] == "01" :
             if phone[3] in ["0" , "2" , "5" , "1"] :
                 return phone
-    else :
-        raise ValidationError("You Enter Wrong Phone Number")
+   
+    raise ValidationError("You Enter Wrong Phone Number")
