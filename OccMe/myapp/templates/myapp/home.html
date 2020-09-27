@@ -1,0 +1,49 @@
+{% extends 'myapp/_shared.html'%}
+{% load static %}
+{% block content%}
+
+<form class="search-form" action="#" method="get">
+    <input type="text" name="occupation" id="occupation" placeholder="ex. : carpenter">
+    <button class="btn-search" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+</form>
+
+<div id="map"></div>
+
+
+<div class="cards-continer">
+
+    {% for canadian in canadians%}
+    <div class="candian-card">
+        <img class="profile-img" src="{{canadian.profile.url}}" alt="profile">
+        <h3 class="fullname">{{canadian.firstname}} {{canadian.lastname}}</h3>
+        <h5 class="job-title">{{canadian.occupation}}</h5>
+
+        <div class="rate-container">
+            {% for n in range %}
+            {% if canadian.rate > n %}
+                <span class="fa fa-star checked"></span>
+            {% else %}
+            <span class="fa fa-star"></span>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script>
+    var marker, map
+    // Initialize and add the map
+    function initMap() {
+        // The location of Uluru
+        var uluru = { lat: -25.344, lng: 131.036 };
+        // The map, centered at Uluru
+        map = new google.maps.Map(
+            document.getElementById('map'), { zoom: 4, center: uluru });
+        // The marker, positioned at Uluru
+        marker = new google.maps.Marker({ position: uluru, map: map });
+    }
+</script>
+<script defer src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"></script>
+
+{% endblock %}

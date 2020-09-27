@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.search-form{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    z-index: 10;
+}
+
+#map {
+    width: 100%;
+    height: 300px;
+    background-color: grey;
+}
+
+
+.cards-continer{
+    display: flex;
+    overflow-x: scroll;
+}
+
+.candian-card{
+    cursor: pointer;
+    width: 150px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 1rem;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 4px 0 rgba(0, 0, 0, 0.19);
+}
+
+.profile-img{
+    width: 100px;
+    height: 160px;
+    border-radius: 50%;
+}
+
+.fullname{
+    letter-spacing: .5px;
+}
+
+.job-title{
+    font-weight: 300;
+    color: gray;
+}
+
+
+.fa.fa-star.checked{
+    color: orange;
+}

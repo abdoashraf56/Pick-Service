@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse , HttpResponseNotFound
 
 def HttpGet(view_func):
     """
@@ -8,7 +8,7 @@ def HttpGet(view_func):
         if request.method == "GET":
             return view_func(request , *args , **keyargs)
         else :
-            return HttpResponse(404)
+            return HttpResponseNotFound('<h1>Page not found</h1>')
     return wrap
 
 def HttpPost(view_func):
@@ -19,6 +19,6 @@ def HttpPost(view_func):
         if request.method == "POST":
             return view_func(request , *args , **keyargs)
         else :
-            return HttpResponse(404)
+            return HttpResponseNotFound('<h1>Page not found</h1>')
     return wrap
 
