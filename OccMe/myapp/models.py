@@ -1,5 +1,5 @@
 from django.db import models
-from .utilites import validatePhone
+from .validators import validatePhone
 from uuid import uuid4
 
 
