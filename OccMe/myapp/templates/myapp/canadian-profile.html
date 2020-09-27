@@ -1,0 +1,103 @@
+{% extends 'myapp/_shared.html'%}
+
+{% load static %}
+{% block content%}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<div class="container">
+    <div class="profile-container">
+        <div class="profile">
+            <img class="profile-img" src="{{ canadian.profile.url }}" alt="profile">
+            <h3 class="fullname">{{canadian.firstname}} {{canadian.lastname}}</h3>
+            <h5 class="job-title">{{canadian.occupation}}</h5>
+
+            <div class="rate-container">
+                {% for n in range %}
+                {% if canadian.rate > n %}
+                    <span class="fa fa-star checked"></span>
+                {% else %}
+                <span class="fa fa-star"></span>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+            <a href="#" class="btn-pick">Pick Servic</a>
+            <a style="text-decoration: none; color: black; font-size: 1rem;" href="{% url 'home'%}"><h5><i class="fa fa-arrow-left"></i> BACK</h5></a>
+        </div>
+
+        <div class="review-continer">
+            <h4>Reviews</h4>
+            <div class="review-card">
+                <div class="user-profile">
+                    <img class="review-img" src="{% static  'images/profile.png' %}" alt="" srcset="">
+                    <h5>Julia Robert</h5>
+                </div>
+                <div class="reveiw">
+                    <div class="date">20/10/2020</div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, qui</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="user-profile">
+                    <img class="review-img" src="{% static  'images/profile.png' %}" alt="" srcset="">
+                    <h5>Julia Robert</h5>
+                </div>
+                <div class="reveiw">
+                    <div class="date">20/10/2020</div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, qui</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="user-profile">
+                    <img class="review-img" src="{% static  'images/profile.png' %}" alt="" srcset="">
+                    <h5>Julia Robert</h5>
+                </div>
+                <div class="reveiw">
+                    <div class="date">20/10/2020</div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, qui</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="user-profile">
+                    <img class="review-img" src="{% static  'images/profile.png' %}" alt="" srcset="">
+                    <h5>Julia Robert</h5>
+                </div>
+                <div class="reveiw">
+                    <div class="date">20/10/2020</div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, qui</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="user-profile">
+                    <img class="review-img" src="{% static  'images/profile.png' %}" alt="" srcset="">
+                    <h5>Julia Robert</h5>
+                </div>
+                <div class="reveiw">
+                    <div class="date">20/10/2020</div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, qui</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="user-profile">
+                    <img class="review-img" src="{% static  'images/profile.png' %}" alt="" srcset="">
+                    <h5>Julia Robert</h5>
+                </div>
+                <div class="reveiw">
+                    <div class="date">20/10/2020</div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, qui</p>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="user-profile">
+                    <img class="review-img" src="{% static  'images/profile.png' %}" alt="" srcset="">
+                    <h5>Julia Robert</h5>
+                </div>
+                <div class="reveiw">
+                    <div class="date">20/10/2020</div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, qui</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
