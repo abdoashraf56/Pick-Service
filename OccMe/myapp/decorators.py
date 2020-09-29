@@ -1,4 +1,4 @@
-from django.http import HttpResponse , HttpResponseNotFound
+from django.http import HttpResponse , HttpResponseNotFound , HttpResponseNotAllowed
 from django.shortcuts import render , redirect
 def HttpGet(view_func):
     """
@@ -31,5 +31,21 @@ def NotAllowed_on_login(view_func):
         if request.user.is_authenticated == False : 
             return view_func(request , *args , **keyargs)
         else:
-            return redirect('home')
+            return redirect('')
     return wrapper
+
+def Authorize(groups):
+    """
+        Authorize controls by list of groups
+    """
+    def warp1(view_func):
+        def wrap2(request , *args , **keyargs):
+            if request.user.groups.filter(name__in=groups).count() > 0 :
+                return view_func(request , *args , **keyargs)
+            else :
+                return HttpResponseNotAllowed("<h1>You not allowed here</h1>")
+        return wrap2
+    return warp1
+
+
+

@@ -7,6 +7,8 @@ from .forms import *
 from django.contrib.auth import authenticate , login , logout
 # Create your views here.
 
+@login_required(login_url="login")
+@Authorize(groups=["user" , "admin"])
 @HttpGet
 def home(request):
     """
@@ -19,7 +21,7 @@ def home(request):
     filterByOccupation = request.GET.get("occupation")
     if filterByOccupation :
         canadians = canadians.filter(occupation=filterByOccupation)
-
+    print(request.user.oridnaryUser.phone)
     context = {"canadians" : canadians , "range" : range(5) , "occupations" : occupations}
     return render(request , 'myapp/home.html' , context)
 

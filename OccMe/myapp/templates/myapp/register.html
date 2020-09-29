@@ -4,12 +4,14 @@
 <link rel="stylesheet" href="{% static 'css/register.css'%}">
 <div class="container">
     <div class="profile-container">
+        {% if errors %}
+        {{errors}}
+        {% endif %}
         
         <form action="" method="post">
-            {{errors}}
+            {% csrf_token %}
             <h3>Reigster Form</h3>
             <br>
-            {% csrf_token %}
             <div class="form-control">
                 <label for="first_name">First Name</label>
                 <br>
@@ -52,7 +54,7 @@
             </select>
             
             <div class="form-control">
-                <a href="">Already have account !!</a>
+                <a href="{% url 'login' %}">Already have account !!</a>
             </div>
 
             <input class="btn-login" type="submit" value="register">

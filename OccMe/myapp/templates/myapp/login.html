@@ -4,7 +4,9 @@
 <link rel="stylesheet" href="{% static 'css/register.css'%}">
 <div class="container">
     <div class="profile-container">
-        
+        {% if errors%}
+            {{errors}}
+        {% endif %}
         <form action="" method="post">
             {% csrf_token %}
             <h3>Login Form</h3>
@@ -12,7 +14,7 @@
             <div class="form-control">
                 <label for="username">Username</label>
                 <br>
-                <input type="text" name="first_name">
+                <input type="text" name="username">
             </div>
             <div class="form-control">
                 <label for="password">Password</label><br>
@@ -20,7 +22,7 @@
             </div>
 
             <div class="form-control">
-                <a href="#" style="display: block;">Don't have account ??</a>
+                <a href="{% url 'register' %}" style="display: block;">Don't have account ??</a>
             </div>
             <input class="btn-login" type="submit" value="LOG IN">
         </form>

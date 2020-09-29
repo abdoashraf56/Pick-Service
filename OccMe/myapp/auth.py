@@ -20,6 +20,7 @@ def registerPage(request):
             if request.POST.get("canadian") == "on" :
                 occupation = request.POST.get("occupation")
                 Canadian.objects.create(
+                    user = user,
                     firstname = request.POST.get("first_name"),
                     lastname = request.POST.get("last_name") ,
                     email = request.POST.get("email") ,
@@ -27,6 +28,13 @@ def registerPage(request):
                     occupation= Occupation.objects.get(id = int(request.POST.get("occupation")))
                 )
                 group = Group.objects.get(name='canadian')
+                user.groups.add(group)
+            else :
+                OridnaryUser.objects.create(
+                    user = user ,
+                    phone = request.POST.get("phone")
+                )
+                group = Group.objects.get(name='user')
                 user.groups.add(group)
             return redirect("/")
         else :
