@@ -3,7 +3,11 @@
 {% block content%}
 
 <form class="search-form" action="#" method="get">
-    <input type="text" name="occupation" id="occupation" placeholder="ex. : carpenter">
+    <select name="occupation" id="occupation">
+        {% for occupation in occupations %}
+            <option value="{{occupation.id}}">{{occupation}}</option>
+        {% endfor %}
+    </select>
     <button class="btn-search" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
 </form>
 
@@ -16,7 +20,7 @@
     <div class="candian-card">
         <a href="{% url 'canadian_profile' canadian.id %}"><img class="profile-img" src="{{canadian.profile.url}}" alt="profile"></a>
         <h3 class="fullname">{{canadian.firstname}} {{canadian.lastname}}</h3>
-        <h5 class="job-title">{{canadian.occupation}}</h5>
+        <h5 class="job-title">{{canadian.occupation.name}}</h5>
 
         <div class="rate-container">
             {% for n in range %}

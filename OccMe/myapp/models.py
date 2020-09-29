@@ -11,14 +11,7 @@ class Occupation (models.Model):
 
 class Canadian (models.Model):
     """ Data Class contains Canadian information """
-    occupations = [
-        ("Electric" , "Electric"),
-        ("Cartpenter" , "Cartpenter"),
-        ("Plumper" , "Plumper"),
-        ("Other" , "Other"),
-        ("Mechanic" , "Mechanic")
-    ]
-    id = models.UUIDField(default=uuid4() , primary_key=True)
+    id = models.UUIDField(default=uuid4 , primary_key=True)
     firstname = models.CharField(max_length=70)
     lastname = models.CharField(max_length=70)
     email = models.EmailField()
