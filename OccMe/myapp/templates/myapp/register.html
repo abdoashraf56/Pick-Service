@@ -1,0 +1,53 @@
+{% extends 'myapp/_shared.html'%}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/register.css'%}">
+<div class="container">
+    <div class="profile-container">
+        
+        <form action="" method="post">
+            {{errors}}
+            <h3>Reigster Form</h3>
+            <br>
+            {% csrf_token %}
+            <div class="form-control">
+                <label for="first_name">First Name</label>
+                <br>
+                <input type="text" name="first_name">
+            </div>
+            <div class="form-control">
+                <label for="last_name">Last Name</label><br>
+                <input type="text" name="last_name">
+            </div>
+            <div class="form-control">
+                <label for="username">Username</label><br>
+                <input type="text" name="username">
+            </div>
+            <div class="form-control">
+                <label for="email">Email</label><br>
+                <input type="email" name="email">
+            </div>
+            <div class="form-control">
+                <label for="password1">Password</label><br>
+                <input type="password" name="password1">
+            </div>
+            <div class="form-control">
+                <label for="confirm_password">Confirm Password</label><br>
+                <input type="password" name="password2">
+            </div>
+            
+            <div class="form-control">
+                <label for="as_canadian">As Canadian</label>
+                <input type="checkbox" name="as_canadian">
+            </div>
+            
+            <div class="form-control">
+                <a href="">Already have account !!</a>
+            </div>
+
+            <input class="btn-login" type="submit" value="register">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

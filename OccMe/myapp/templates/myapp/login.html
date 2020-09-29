@@ -1,0 +1,29 @@
+{% extends 'myapp/_shared.html'%}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/register.css'%}">
+<div class="container">
+    <div class="profile-container">
+        
+        <form action="" method="post">
+            {% csrf_token %}
+            <h3>Login Form</h3>
+            <br>
+            <div class="form-control">
+                <label for="username">Username</label>
+                <br>
+                <input type="text" name="first_name">
+            </div>
+            <div class="form-control">
+                <label for="password">Password</label><br>
+                <input type="password" name="password">
+            </div>
+
+            <div class="form-control">
+                <a href="#" style="display: block;">Don't have account ??</a>
+            </div>
+            <input class="btn-login" type="submit" value="LOG IN">
+        </form>
+    </div>
+</div>
+{% endblock %}
