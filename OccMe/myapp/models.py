@@ -18,7 +18,7 @@ class Canadian (models.Model):
     phone = models.CharField(max_length=11 , validators=[validatePhone])
     profile = models.ImageField(default="profile.png", null=True, blank=True)
     occupation = models.ForeignKey(Occupation , null=True , related_name="canadians" , on_delete=models.SET_NULL)
-    rate = models.IntegerField()
+    rate = models.IntegerField(default=3)
     latitude = models.DecimalField(max_digits=8, decimal_places=6 , null=True)
     longitude = models.DecimalField(max_digits=9, decimal_places= 6 , null=True)
 

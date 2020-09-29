@@ -25,7 +25,11 @@
             </div>
             <div class="form-control">
                 <label for="email">Email</label><br>
-                <input type="email" name="email">
+                <input type="email" name="email" autocomplete="email">
+            </div>
+            <div class="form-control">
+                <label for="phone">Phone</label><br>
+                <input type="phone" name="phone">
             </div>
             <div class="form-control">
                 <label for="password1">Password</label><br>
@@ -38,8 +42,14 @@
             
             <div class="form-control">
                 <label for="as_canadian">As Canadian</label>
-                <input type="checkbox" name="as_canadian">
+                <input type="checkbox" name="canadian">
             </div>
+
+            <select style="display: none;" name="occupation" id="occupation">
+                {% for occupation in occupations %}
+                    <option value="{{occupation.id}}">{{occupation}}</option>
+                {% endfor %}
+            </select>
             
             <div class="form-control">
                 <a href="">Already have account !!</a>
@@ -49,5 +59,19 @@
         </form>
     </div>
 </div>
+
+<script>
+    let appear = false
+    function toogleOccupationInput() {
+        appear = ! appear
+        let select = document.querySelector("select")
+        select.style.display = (appear) ? "inline" : "none"
+    }
+
+    let checkbox = document.querySelector("input[type='checkbox']")
+    checkbox.addEventListener("change" , (e)=>{
+        toogleOccupationInput()
+    })
+</script>
 
 {% endblock %}

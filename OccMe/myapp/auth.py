@@ -5,20 +5,33 @@ from .models import *
 from .decorators import *
 from .forms import *
 from django.contrib.auth import authenticate , login , logout
-
+from django.contrib.auth.models import User , Group
 
 @NotAllowed_on_login
 def registerPage(request):
     form = RegisterForm()
+    occupations = Occupation.objects.all()
     errors = None
     if request.method == "POST" :
         form = RegisterForm(request.POST)
         if form.is_valid() :
-            form.save()
+            user = form.save()
+            #check if the user register as canadina and create new canadian
+            if request.POST.get("canadian") == "on" :
+                occupation = request.POST.get("occupation")
+                Canadian.objects.create(
+                    firstname = request.POST.get("first_name"),
+                    lastname = request.POST.get("last_name") ,
+                    email = request.POST.get("email") ,
+                    phone = request.POST.get("phone"),
+                    occupation= Occupation.objects.get(id = int(request.POST.get("occupation")))
+                )
+                group = Group.objects.get(name='canadian')
+                user.groups.add(group)
             return redirect("/")
         else :
             errors = form.errors.values()
-    context = {"form" : form , "errors" : errors}
+    context = {"form" : form , "occupations" : occupations , "errors" : errors}
     return render(request , 'myapp/register.html' , context)
 
 @NotAllowed_on_login
