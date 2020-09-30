@@ -31,7 +31,7 @@ def NotAllowed_on_login(view_func):
         if request.user.is_authenticated == False : 
             return view_func(request , *args , **keyargs)
         else:
-            return redirect('')
+            return redirect('/')
     return wrapper
 
 def Authorize(groups):

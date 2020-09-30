@@ -21,7 +21,7 @@ def home(request):
     filterByOccupation = request.GET.get("occupation")
     if filterByOccupation :
         canadians = canadians.filter(occupation=filterByOccupation)
-    print(request.user.oridnaryUser.phone)
+    
     context = {"canadians" : canadians , "range" : range(5) , "occupations" : occupations}
     return render(request , 'myapp/home.html' , context)
 

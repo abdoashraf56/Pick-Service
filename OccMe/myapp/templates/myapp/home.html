@@ -2,10 +2,24 @@
 {% load static %}
 {% block content%}
 
+<div style=" position: absolute;
+top: 10%;
+right: 10%;
+height: 50px;
+z-index: 10;
+background-color: white;
+border-left: 3px solid mediumseagreen;
+box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 4px 0 rgba(0, 0, 0, 0.19);
+padding: 1rem;
+font-weight: bold;
+font-style: italic;" class="login-card">
+    Welcome Back {{request.user.first_name | title}}  {{request.user.last_name | title}}
+</div>
+
 <form class="search-form" action="#" method="get">
     <select name="occupation" id="occupation">
         {% for occupation in occupations %}
-            <option value="{{occupation.id}}">{{occupation}}</option>
+        <option value="{{occupation.id}}">{{occupation}}</option>
         {% endfor %}
     </select>
     <button class="btn-search" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
@@ -18,14 +32,15 @@
 
     {% for canadian in canadians%}
     <div class="candian-card">
-        <a href="{% url 'canadian_profile' canadian.id %}"><img class="profile-img" src="{{canadian.profile.url}}" alt="profile"></a>
+        <a href="{% url 'canadian_profile' canadian.id %}"><img class="profile-img" src="{{canadian.profile.url}}"
+                alt="profile"></a>
         <h3 class="fullname">{{canadian.firstname}} {{canadian.lastname}}</h3>
         <h5 class="job-title">{{canadian.occupation.name}}</h5>
 
         <div class="rate-container">
             {% for n in range %}
             {% if canadian.rate > n %}
-                <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
             {% else %}
             <span class="fa fa-star"></span>
             {% endif %}
@@ -47,6 +62,16 @@
         // The marker, positioned at Uluru
         marker = new google.maps.Marker({ position: uluru, map: map });
     }
+
+    let model = document.querySelector(".login-card")
+
+    function disapear() {
+        setTimeout(() => {
+            model.style.display = "none"
+        }, 3000);
+    }
+
+    disapear()
 </script>
 <script defer src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap"></script>
 
