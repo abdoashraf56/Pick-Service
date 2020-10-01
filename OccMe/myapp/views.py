@@ -42,4 +42,15 @@ def canadian_profile(request , pk):
     else : 
         return HttpResponseNotFound("Can'y find your canadian")
     
+@HttpGet
+def pickService(request , pk):
+    """
+        @desc Get the pick service page to pick it
+        @route pick-service/:pk
+    """
+    canadain = Canadian.objects.get(id=pk)
+    # user = OridnaryUser.objects.get(user=request.user)
+    context = {"canadain" : canadain} 
+    return render(request , 'myapp/pick-service.html' , context)
 
+    

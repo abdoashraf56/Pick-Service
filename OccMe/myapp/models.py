@@ -36,3 +36,16 @@ class OridnaryUser(models.Model):
 
     def __str__(self) :
         return f"{self.phone}"
+
+class Service(models.Model):
+    """ Data Class contains service information """
+    id = models.UUIDField(default=uuid4 , primary_key=True)
+    user = models.ForeignKey(OridnaryUser, null=True , on_delete=models.SET_NULL)
+    canadian = models.ForeignKey(Canadian, null=True , on_delete=models.SET_NULL)
+    createdAt = models.DateTimeField(auto_now_add=True)
+    startAt = models.DateTimeField()
+    description = models.TextField()
+    profile = models.ImageField(null=True, blank=True)
+    endAt = models.DateTimeField(null=True)
+    isFinish = models.BooleanField(default=False)
+    cost = models.DecimalField(max_digits=8, decimal_places=2 , null=True)

@@ -1,0 +1,28 @@
+{% extends 'myapp/_shared.html'%}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/pick-service.css' %}">
+
+<div class="container">
+    <div class="pick-service-container">
+        <div class="img-container">
+            <img class="profile-img" src="{{canadain.profile.url}}" alt="" srcset="">
+        </div>
+
+
+        <form class="form" action="" method="post">
+            {% csrf_token %}
+            <label for="">Description</label>
+            <br>
+            <textarea name="description" id="" cols="30" rows="10">HI Mr. {{canadain.user.first_name}} {{canadain.user.last_name}} &#013;I need you help in </textarea>
+            <label>Add Photo</label>
+            <input type="file" name="profile" value="" id="">
+            <br>
+            <label>Pick Time</label>
+            <input type="datetime-local"  value="2018-06-12T19:30" name="startAt" id="">
+            <input class="btn-pick" type="submit" value="PICK NOW">
+        </form>
+           
+    </div>
+
+{% endblock %}

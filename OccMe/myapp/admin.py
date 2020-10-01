@@ -4,3 +4,4 @@ from .models import *
 admin.site.register(Canadian)
 admin.site.register(Occupation)
 admin.site.register(OridnaryUser)
+admin.site.register(Service)

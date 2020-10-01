@@ -5,6 +5,7 @@ from . import auth
 urlpatterns = [
     path('', views.home , name = "home"),
     path('canadian_profile/<uuid:pk>', views.canadian_profile , name = "canadian_profile"),
+    path('pick-service/<uuid:pk>', views.pickService , name = "pick-service"),
 
 
     # authoriztion and authincation urls

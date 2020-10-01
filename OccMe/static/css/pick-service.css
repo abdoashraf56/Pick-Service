@@ -1,0 +1,49 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    background-color: whitesmoke;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pick-service-container {
+    background-color: white;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 4px 0 rgba(0, 0, 0, 0.19);
+    padding: 1rem;
+}
+
+.profile-img{
+    width: 150px;
+    height: 300px;
+    border-radius: 50%;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+textarea {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.btn-pick{
+    border: none;
+    background-color: blueviolet;
+    padding: .5rem;
+    font-weight: bold;
+    color : white;
+}

@@ -3,7 +3,8 @@ from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
-class OccupationForm():
+
+class OccupationForm(ModelForm):
     class Meta :
         model = Occupation
         fields = "__all__"
