@@ -21,9 +21,6 @@ def registerPage(request):
                 occupation = request.POST.get("occupation")
                 Canadian.objects.create(
                     user = user,
-                    firstname = request.POST.get("first_name"),
-                    lastname = request.POST.get("last_name") ,
-                    email = request.POST.get("email") ,
                     phone = request.POST.get("phone"),
                     occupation= Occupation.objects.get(id = int(request.POST.get("occupation")))
                 )

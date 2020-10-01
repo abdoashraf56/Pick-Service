@@ -15,7 +15,7 @@ def home(request):
         @desc Get The Home page with canadians avaliable
         @route home/?occupation=
     """
-    canadians = Canadian.objects.all().order_by("-rate", "occupation" , "firstname")
+    canadians = Canadian.objects.all().order_by("-rate", "occupation" , "user__first_name")
     occupations = Occupation.objects.all()
     # if filter is provide in request filter the canadians by it
     filterByOccupation = request.GET.get("occupation")

@@ -13,7 +13,7 @@ box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 4px 0 rgba(0, 0, 0, 0.19);
 padding: 1rem;
 font-weight: bold;
 font-style: italic;" class="login-card">
-    Welcome Back {{request.user.first_name | title}}  {{request.user.last_name | title}}
+    Welcome Back {{request.user.first_name | title}} {{request.user.last_name | title}}
 </div>
 
 <form class="search-form" action="#" method="get">
@@ -34,7 +34,7 @@ font-style: italic;" class="login-card">
     <div class="candian-card">
         <a href="{% url 'canadian_profile' canadian.id %}"><img class="profile-img" src="{{canadian.profile.url}}"
                 alt="profile"></a>
-        <h3 class="fullname">{{canadian.firstname}} {{canadian.lastname}}</h3>
+        <h3 class="fullname">{{canadian.user.first_name}} {{canadian.user.last_name}}</h3>
         <h5 class="job-title">{{canadian.occupation.name}}</h5>
 
         <div class="rate-container">
