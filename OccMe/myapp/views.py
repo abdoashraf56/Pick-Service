@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 from .decorators import *
 from .forms import *
+import django.utils.timezone as tz
 from django.contrib.auth import authenticate , login , logout
 # Create your views here.
 
@@ -25,6 +26,8 @@ def home(request):
     context = {"canadians" : canadians , "range" : range(5) , "occupations" : occupations}
     return render(request , 'myapp/home.html' , context)
 
+@login_required(login_url="login")
+@Authorize(groups=["user" , "admin"])
 @HttpGet
 def canadian_profile(request , pk):
     """
@@ -41,7 +44,9 @@ def canadian_profile(request , pk):
         return render(request , 'myapp/canadian-profile.html' , context)
     else : 
         return HttpResponseNotFound("Can'y find your canadian")
-    
+
+@login_required(login_url="login")
+@Authorize(groups=["user" , "admin"])  
 @HttpGet
 def pickService(request , pk):
     """
@@ -49,8 +54,27 @@ def pickService(request , pk):
         @route pick-service/:pk
     """
     canadain = Canadian.objects.get(id=pk)
-    # user = OridnaryUser.objects.get(user=request.user)
-    context = {"canadain" : canadain} 
+    form = ServiceForm()
+    context = {"canadain" : canadain , "form" : form} 
     return render(request , 'myapp/pick-service.html' , context)
 
-    
+@login_required(login_url="login")
+@Authorize(groups=["user" , "admin"])
+@HttpPost
+def postService(request , pk):
+    """
+        @desc Post new service to database
+        @route post-service/:pk
+    """
+    canadian = Canadian.objects.get(id=pk)
+    user = OridnaryUser.objects.get(user = request.user)
+    print(request.POST.get("photo"))
+    service = Service.objects.create(
+        user= user ,
+        canadian = canadian ,
+        startAt= request.POST.get("startAt"),
+        description=request.POST.get('description' , ''),
+        photo = request.FILES.get("photo")
+    )
+    service.save()
+    return HttpResponse(200)

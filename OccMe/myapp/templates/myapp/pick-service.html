@@ -6,23 +6,27 @@
 <div class="container">
     <div class="pick-service-container">
         <div class="img-container">
-            <img class="profile-img" src="{{canadain.profile.url}}" alt="" srcset="">
+            <img style="    width: 150px;
+            height: 150px;
+            border-radius: 50%;" src="{{canadain.profile.url}}" alt="" srcset="">
         </div>
 
 
-        <form class="form" action="" method="post">
+        <form enctype="multipart/form-data" class="form" action="{% url 'post-service' canadain.id %}" method="post">
             {% csrf_token %}
             <label for="">Description</label>
             <br>
             <textarea name="description" id="" cols="30" rows="10">HI Mr. {{canadain.user.first_name}} {{canadain.user.last_name}} &#013;I need you help in </textarea>
-            <label>Add Photo</label>
-            <input type="file" name="profile" value="" id="">
+            <input type="file" name="photo" id="">
             <br>
             <label>Pick Time</label>
-            <input type="datetime-local"  value="2018-06-12T19:30" name="startAt" id="">
+            <input type="datetime-local"  value="2020-06-12T19:30" name="startAt" id="">
             <input class="btn-pick" type="submit" value="PICK NOW">
         </form>
            
     </div>
 
+    <script>
+        
+    </script>
 {% endblock %}

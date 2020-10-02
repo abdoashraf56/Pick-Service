@@ -23,9 +23,9 @@
     padding: 1rem;
 }
 
-.profile-img{
+.canadian-img{
     width: 150px;
-    height: 300px;
+    height: 150px;
     border-radius: 50%;
 }
 
@@ -41,6 +41,7 @@ textarea {
 }
 
 .btn-pick{
+    cursor: pointer;
     border: none;
     background-color: blueviolet;
     padding: .5rem;
