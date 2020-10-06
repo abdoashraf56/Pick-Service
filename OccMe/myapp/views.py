@@ -77,4 +77,39 @@ def postService(request , pk):
         photo = request.FILES.get("photo")
     )
     service.save()
+    return render(request , 'myapp/thankspage.html')
+
+@login_required(login_url="login")
+@Authorize(groups=["canadian"])
+@HttpGet
+def canadian(request):
+    canadian = Canadian.objects.get(user=request.user)
+    requests = Service.objects.filter(canadian = canadian).count()
+    context = { 
+            "range" : range(5) ,
+            "canadian" : canadian ,
+            "requests": requests
+        }
+    return render(request , 'myapp/canadian.html' , context)
+
+@login_required(login_url="login")
+@Authorize(groups=["canadian"])
+@HttpGet
+def edit_canadian_profile(request):
+    canadian = Canadian.objects.get(user=request.user)
+    user_form = UpdateUserForm(instance=request.user)
+    canadian_form = CanadianForm(instance=canadian)
+    context = {"canadian_form" : canadian_form.as_ul() , "user_form" : user_form.as_ul()}
+    return render(request , 'myapp/edit_candian_profile.html' , context)
+
+
+@login_required(login_url="login")
+@Authorize(groups=["canadian"])
+@HttpPost
+def edit_canadian_profile_post(request):
+    canadian = Canadian.objects.get(user=request.user)
+    user_form = UpdateUserForm(request.POST , instance=request.user)
+    canadian_form = CanadianForm(request.POST , instance=canadian)
+    user_form.save()
+    canadian_form.save()
     return HttpResponse(200)

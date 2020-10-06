@@ -48,7 +48,11 @@ def loginPage(request):
 
         if user is not None:
             login(request , user)
-            return redirect("/")
+            try :
+                user.groups.get(name = "canadian") 
+                return redirect("canadian")
+            except :
+                return redirect("/")
     return render(request , 'myapp/login.html')
 
 @login_required(login_url='login')

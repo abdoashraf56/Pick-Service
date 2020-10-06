@@ -1,0 +1,20 @@
+{% extends 'myapp/_shared.html'%}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/thankspage.css' %}">
+    <div class="container">
+        <div class="message-container">
+            <h1>Thanks</h1>
+            <br>
+            <p>
+                your request has been sent successfully 
+                In waiting for canadian to accept if we refusee it will automatically go to next one 
+            </p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <a style="text-decoration: none; color: black; font-size: 1rem;" href="{% url 'home'%}"><h5><i class="fa fa-arrow-left"></i> BACK</h5></a>
+        </div>
+    </div>
+{% endblock %}
