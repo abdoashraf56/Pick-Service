@@ -1,0 +1,44 @@
+{% extends 'myapp/_shared.html'%}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/canadian.css'%}">
+ <div class="container">
+    <div class="profile-container">
+        <div class="profile">
+            <img class="profile-img" src="{{ canadian.profile.url }}" alt="profile">
+            <h3 class="fullname">{{canadian.user.first_name}} {{canadian.user.last_name}}</h3>
+            <h5 class="job-title">{{canadian.occupation.name}}</h5>
+            <h5 class="job-title">{{canadian.phone}}</h5>
+
+            <div class="rate-container">
+                {% for n in range %}
+                {% if canadian.rate > n %}
+                    <span class="fa fa-star checked"></span>
+                {% else %}
+                <span class="fa fa-star"></span>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+            <a href="{% url 'canadian' %}" class="btn-requests">Back</a>
+            <a href="{% url 'edit_candian_profile' %}" class="btn-edit">Edit Profile</a>
+        </div>
+
+        <div class="review-continer">
+            <h4>Requests</h4>
+            {% for request in requests %}
+            <div class="review-card">
+                <div class="user-profile">
+                    <img class="review-img" src="{{request.user.profile.url}}" alt="" srcset="">
+                    <h5>{{request.user.user.first_name}} {{request.user.user.last_name}}</h5>
+                </div>
+                <div class="reveiw">
+                    <div class="date">{{request.createdAt}}</div>
+                    <p>{{request.description}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

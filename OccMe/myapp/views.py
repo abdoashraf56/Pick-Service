@@ -84,16 +84,29 @@ def postService(request , pk):
 @HttpGet
 def canadian(request):
     canadian = Canadian.objects.get(user=request.user)
-    requests = Service.objects.filter(canadian = canadian).count()
+    requests_num = Service.objects.filter(canadian = canadian).count()
+    context = { 
+            "range" : range(5) ,
+            "canadian" : canadian ,
+            "requests": requests_num
+        }
+    return render(request , 'myapp/canadian.html' , context)
+
+@login_required(login_url="login")
+@Authorize(groups=["canadian",])
+@HttpGet
+def canadian_requests(request):
+    canadian = Canadian.objects.get(user=request.user)
+    requests = Service.objects.filter(canadian = canadian).order_by("-createdAt")
     context = { 
             "range" : range(5) ,
             "canadian" : canadian ,
             "requests": requests
         }
-    return render(request , 'myapp/canadian.html' , context)
+    return render(request , 'myapp/canadian-requests.html' , context)
 
 @login_required(login_url="login")
-@Authorize(groups=["canadian"])
+@Authorize(groups=["canadian",])
 @HttpGet
 def edit_canadian_profile(request):
     canadian = Canadian.objects.get(user=request.user)
@@ -104,7 +117,7 @@ def edit_canadian_profile(request):
 
 
 @login_required(login_url="login")
-@Authorize(groups=["canadian"])
+@Authorize(groups=["canadian",])
 @HttpPost
 def edit_canadian_profile_post(request):
     canadian = Canadian.objects.get(user=request.user)

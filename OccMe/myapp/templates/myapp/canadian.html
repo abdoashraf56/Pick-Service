@@ -20,7 +20,7 @@
                 {% endfor %}
             </div>
 
-            <a href="#" class="btn-requests">Requests <sup>{{requests}}</sup> </a>
+            <a href="{% url 'canadian_requests'%}" class="btn-requests">Requests <sup>{{requests}}</sup> </a>
             <a href="{% url 'edit_candian_profile' %}" class="btn-edit">Edit Profile</a>
         </div>
 
