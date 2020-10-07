@@ -49,4 +49,5 @@ class Service(models.Model):
     photo = models.ImageField(upload_to='' ,default="profile.png", null=True, blank=True)
     endAt = models.DateTimeField(null=True)
     isFinish = models.BooleanField(default=False)
+    isAccepted = models.BooleanField(default=False)
     cost = models.DecimalField(max_digits=8, decimal_places=2 , null=True)

@@ -1,6 +1,23 @@
 {% extends 'myapp/_shared.html'%}
 {% load static %}
 {% block content %}
+<style>
+    .btn-accept {
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    background-color: rgb(0, 143, 107);
+    color: white;
+    font-size: medium;
+    text-align: center;
+}
+
+.review{
+    display: flex;
+    flex-direction: column;
+}
+</style>
 <link rel="stylesheet" href="{% static 'css/canadian.css'%}">
  <div class="container">
     <div class="profile-container">
@@ -21,6 +38,7 @@
             </div>
 
             <a href="{% url 'canadian' %}" class="btn-requests">Back</a>
+            <a href="{% url 'canadian_requests_accepted' %}" class="btn-accept">Accepted Request</a>
             <a href="{% url 'edit_candian_profile' %}" class="btn-edit">Edit Profile</a>
         </div>
 
@@ -32,9 +50,10 @@
                     <img class="review-img" src="{{request.user.profile.url}}" alt="" srcset="">
                     <h5>{{request.user.user.first_name}} {{request.user.user.last_name}}</h5>
                 </div>
-                <div class="reveiw">
+                <div class="review">
                     <div class="date">{{request.createdAt}}</div>
-                    <p>{{request.description}}</p>
+                    <div>{{request.description}}</div>
+                    <a href="{% url 'refuse' request.id %}" class="btn-edit" href="">Refuse</a>
                 </div>
             </div>
             {% endfor %}

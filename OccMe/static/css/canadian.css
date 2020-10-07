@@ -72,6 +72,28 @@
     text-align: center;
 }
 
+.btn-accept {
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    background-color: rgb(0, 143, 107);
+    color: white;
+    font-size: medium;
+    text-align: center;
+}
+
+.btn-edit {
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    background-color: rgb(202, 36, 36);
+    color: white;
+    font-size: medium;
+    text-align: center;
+}
+
 .review-img{
     width: 100px;
     height: 160px;
