@@ -8,8 +8,11 @@ urlpatterns = [
     path('canadian_profile/<uuid:pk>', userviews.canadian_profile , name = "canadian_profile"),
     path('pick-service/<uuid:pk>', userviews.pickService , name = "pick-service"),
     path('post-service/<uuid:pk>', userviews.postService , name = "post-service"),
-    
-    
+    path('user_status' , userviews.user_status , name = 'user_status'),
+    path('edit_user_profile', userviews.edit_user_profile , name = "edit_user_profile"),
+    path('edit_user_profile_post', userviews.edit_user_profile_post , name = "edit_user_profile_post"),
+
+
     #url for canadians
     path('canadian', canadianviews.canadian , name = "canadian"),
     path('canadian_requests', canadianviews.canadian_requests , name = "canadian_requests"),

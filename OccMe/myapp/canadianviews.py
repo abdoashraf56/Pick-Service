@@ -101,8 +101,9 @@ def accept(request , pk):
     """
     service = Service.objects.get(id = pk)
     service.isAccepted = True
-    service.save()
     #Notify the user the canadian accept the request
+    service.note = f"{service.canadian.user.get_full_name()} accept your request"
+    service.save()
     return redirect("canadian_requests")
 
 @login_required(login_url="login")
@@ -118,6 +119,7 @@ def refuse(request , pk):
     canadians = [c for c in canadians if c.id != service.canadian.id]
     random_canadian = choice(canadians)
     service.canadian = random_canadian
-    service.save()
     #Notify the user the canadian refused and turn to other random one
+    service.note = f"your request has shift to {random_canadian.user.get_full_name()}"
+    service.save()
     return redirect("canadian_requests")

@@ -1,0 +1,17 @@
+{% extends 'myapp/_shared.html'%}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/register.css'%}">
+<div class="container">
+    <div class="profile-container">
+        {% if errors %}
+        {{errors}}
+        {% endif %}
+        
+        <form action="{% url 'edit_user_profile_post'%}" method="post">
+            {% csrf_token %}
+            {{user_form}}
+            {{ordinaryUser_form}}
+            <input class="btn-login" type="submit" value="Update">
+        </form>
+{% endblock %}

@@ -29,7 +29,7 @@ font-style: italic;" class="login-card">
 
 
 <div class="cards-continer">
-
+    <a href="{% url 'user_status' %}">Request Status</a>
     {% for canadian in canadians%}
     <div class="candian-card">
         <a href="{% url 'canadian_profile' canadian.id %}"><img class="profile-img" src="{{canadian.profile.url}}"

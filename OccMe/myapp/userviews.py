@@ -78,3 +78,47 @@ def postService(request , pk):
     )
     service.save()
     return render(request , 'myapp/users/thankspage.html')
+
+
+@login_required(login_url="login")
+@Authorize(groups=["user" , "admin"])
+@HttpGet
+def user_status(request):
+    user = OridnaryUser.objects.get(user=request.user)
+
+    requests = Service.objects.filter(user = user , isFinish=False)
+    context = {
+        "user" : user ,
+        "requests" : requests
+    }
+    return render(request , 'myapp/users/user_status.html',context)
+
+@login_required(login_url="login")
+@Authorize(groups=["user",])
+@HttpGet
+def edit_user_profile(request):
+    """
+        @desc Get the user profile edit page
+        @route /edit_user_profile
+    """
+    ordinaryUser = OridnaryUser.objects.get(user=request.user)
+    user_form = UpdateUserForm(instance=request.user)
+    ordinaryUser_form = OrdinaryUserForm(instance=ordinaryUser)
+    context = {"ordinaryUser_form" : ordinaryUser_form.as_ul() , "user_form" : user_form.as_ul()}
+    return render(request , 'myapp/users/edit_user_profile.html' , context)
+
+
+@login_required(login_url="login")
+@Authorize(groups=["user",])
+@HttpPost
+def edit_user_profile_post(request):
+    """
+        @desc POST saved user updated profile 
+        @route /edit_user_profile
+    """
+    ordinaryUser = OridnaryUser.objects.get(user=request.user)
+    user_form = UpdateUserForm(request.POST , instance=request.user)
+    ordinaryUser_form = OrdinaryUserForm(request.POST , instance=ordinaryUser)
+    user_form.save()
+    ordinaryUser_form.save()
+    return redirect("user_status")

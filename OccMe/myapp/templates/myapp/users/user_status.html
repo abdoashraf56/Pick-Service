@@ -1,0 +1,50 @@
+{% extends 'myapp/_shared.html'%}
+{% load static %}
+{% block content %}
+<style>
+    .btn-accept {
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    background-color: rgb(0, 143, 107);
+    color: white;
+    font-size: medium;
+    text-align: center;
+}
+
+.review{
+    display: flex;
+    flex-direction: column;
+}
+</style>
+<link rel="stylesheet" href="{% static 'css/canadian.css'%}">
+ <div class="container">
+    <div class="profile-container">
+        <div class="profile">
+            <img class="profile-img" src="{{ user.profile.url }}" alt="profile">
+            <h3 class="fullname">{{user.user.first_name}} {{canadian.user.last_name}}</h3>
+
+
+            <a href="{% url 'home' %}" class="btn-requests">Back</a>
+            <a href="{% url 'edit_user_profile' %}" class="btn-edit">Edit Profile</a>
+        </div>
+
+        <div class="review-continer">
+            <h4>Requests</h4>
+            {% for request in requests %}
+            <div class="review-card">
+                <div class="user-profile">
+                    <img class="review-img" src="{{request.canadian.profile.url}}" alt="" srcset="">
+                    <h5>{{request.canadian.user.first_name}} {{request.canadian.user.last_name}}</h5>
+                </div>
+                <div class="review">
+                    <div class="date">{{request.createdAt}}</div>
+                    <div>{{request.note}}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

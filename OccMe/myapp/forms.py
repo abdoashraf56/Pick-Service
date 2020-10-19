@@ -9,6 +9,13 @@ class CanadianForm(forms.ModelForm):
         model = Canadian
         fields = ["phone" , "profile" , "occupation"]
 
+class OrdinaryUserForm(forms.ModelForm):
+    class Meta :
+        model = OridnaryUser
+        fields = ["phone" , "profile"]
+
+        
+
 class ServiceForm(forms.ModelForm):
     class Meta : 
         model = Service

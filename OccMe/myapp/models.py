@@ -53,4 +53,4 @@ class Service(models.Model):
     cost = models.DecimalField(max_digits=8, decimal_places=2 , null=True)
     isRate = models.BooleanField(default=False)
     rate = models.IntegerField(default=3)
-    note = models.TextField(blank=True , default="" , null=True)
+    note = models.TextField(default="Your request is under reviews by canadian" , null=True)
