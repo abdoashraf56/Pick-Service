@@ -51,3 +51,6 @@ class Service(models.Model):
     isFinish = models.BooleanField(default=False)
     isAccepted = models.BooleanField(default=False)
     cost = models.DecimalField(max_digits=8, decimal_places=2 , null=True)
+    isRate = models.BooleanField(default=False)
+    rate = models.IntegerField(default=3)
+    note = models.TextField(blank=True , default="" , null=True)
