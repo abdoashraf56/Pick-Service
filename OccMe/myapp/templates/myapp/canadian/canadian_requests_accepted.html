@@ -49,6 +49,7 @@
                 <div class="user-profile">
                     <img class="review-img" src="{{request.user.profile.url}}" alt="" srcset="">
                     <h5>{{request.user.user.first_name}} {{request.user.user.last_name}}</h5>
+                    <h4 class="job-title">{{request.user.phone}}</h4>
                 </div>
                 <div class="review">
                     <div class="date">{{request.createdAt}}</div>
