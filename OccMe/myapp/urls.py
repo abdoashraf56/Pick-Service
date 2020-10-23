@@ -21,6 +21,8 @@ urlpatterns = [
     path('edit_candian_profile_post', canadianviews.edit_canadian_profile_post , name = "edit_candian_profile_post"),
     path('accept/<uuid:pk>', canadianviews.accept , name = "accept"),
     path('refuse/<uuid:pk>', canadianviews.refuse , name = "refuse"),
+    path('finish_request/<uuid:pk>', canadianviews.finish_request , name = "finish_request"),
+    path('finish_request_post', canadianviews.finish_request_post , name = "finish_request_post"),
 
     
     # authoriztion and authincation urls

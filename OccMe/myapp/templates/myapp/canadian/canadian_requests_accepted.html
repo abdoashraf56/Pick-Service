@@ -54,7 +54,7 @@
                 <div class="review">
                     <div class="date">{{request.createdAt}}</div>
                     <div>{{request.description}}</div>
-                    <a href="{% url 'refuse' request.id %}" class="btn-edit" href="">Refuse</a>
+                    <a href="{% url 'finish_request' request.id %}" class="btn-accept">FINISH</a>
                 </div>
             </div>
             {% endfor %}

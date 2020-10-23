@@ -43,7 +43,7 @@ def Authorize(groups):
             if request.user.groups.filter(name__in=groups).count() > 0 :
                 return view_func(request , *args , **keyargs)
             else :
-                return HttpResponseNotAllowed("<h1>You not allowed here</h1>")
+                return HttpResponseNotFound("<h1>You not allowed here</h1>")
         return wrap2
     return warp1
 

@@ -64,6 +64,35 @@ def canadian_requests_accepted(request):
 @login_required(login_url="login")
 @Authorize(groups=["canadian",])
 @HttpGet
+def finish_request(request, pk):
+    """
+        @desc Get the finish service page 
+        @route /finish_request/:pk
+    """
+    context = {"id" : pk}
+    return render(request , 'myapp/canadian/finish_request.html' , context)
+
+
+@login_required(login_url="login")
+@Authorize(groups=["canadian",])
+@HttpPost
+def finish_request_post(request):
+    """
+        @desc POST update service to finished , add cost , update end at
+        @route /finish_request/:pk
+    """
+    service = Service.objects.get(id=request.POST.get("id"))
+    service.isFinish = True
+    service.cost = request.POST.get('price' , 0)
+    service.endAt = tz.now()
+    service.save()
+    return redirect("canadian_requests_accepted")
+
+
+
+@login_required(login_url="login")
+@Authorize(groups=["canadian",])
+@HttpGet
 def edit_canadian_profile(request):
     """
         @desc Get the canadian profile edit page

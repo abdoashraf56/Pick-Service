@@ -1,0 +1,10 @@
+{% extends 'myapp/_shared.html'%}
+{% load static %}
+{% block content %}
+    <form action="{% url 'finish_request_post'%}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{id}}">
+        <input type="number" name="price" id="">
+        <input type="submit" value="FINISH">
+    </form>
+{% endblock %}
